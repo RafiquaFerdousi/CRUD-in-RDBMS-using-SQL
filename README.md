@@ -1,2 +1,2 @@
-# CRUD-in-RDBMS-using-SQL
+# CRUD-in-RDBMS->SQL
 This is an example.
