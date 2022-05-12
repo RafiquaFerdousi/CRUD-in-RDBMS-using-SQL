@@ -1,9 +1,44 @@
 #SQL Basics
 
-How do we use the DISTINCT statement?
-SELECT DISTINCT column_name(s)
- FROM table_name;
- 
+#####Write a SQL query to find the 10th highest employee salary from an Employee table.
+
+MySQL:
+SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC LIMIT 9,1;
+
+PostgreSQL:
+SELECT DISTINCT Salary FROM Employee ORDER BY Salary DESC LIMIT 1 OFFSET 9;
+
+
+######Write a SQL query using UNION ALL (not UNION) that uses the WHERE clause to eliminate duplicates.
+SELECT * FROM mytable WHERE a=X UNION ALL SELECT * FROM mytable WHERE b=Y AND a!=X
+
+######How can you select all the even number records from a table? All the odd number records?
+
+Select * from table where id % 2 = 0 
+
+To select all the odd number records from a table:
+Select * from table where id % 2 != 0
+
+
+######What is the difference between the WHERE and HAVING clauses?
+Answer:  When GROUP BY is not used, the WHERE and HAVING clauses are essentially equivalent. However, when GROUP BY is used:
+
+- The WHERE clause is used to filter records from a result. The filtering occurs before any groupings are made.
+- The HAVING clause is used to filter values from a group (i.e., to check conditions after aggregation into groups has been performed).
+
+
+#####What is the difference between char and varchar2?
+Answer:When stored in a database, varchar2 uses only the allocated space. E.g. if you have a varchar2(1999) and put 50 bytes in the table, it will use 52 bytes. But when stored in a database, char always uses the maximum length and is blank-padded. E.g. if you have char(1999) and put 50 bytes in the table, it will consume 2000 bytes.
+
+
+######What does UNION do? What is the difference between UNION and UNION ALL?
+Answer:UNION merges the contents of two structurally-compatible tables into a single combined table. The difference between UNION and UNION ALL is that UNION will omit duplicate records whereas UNION ALL will include duplicate records.
+
+It is important to note that the performance of UNION ALL will typically be better than UNION, since UNION requires the server to do the additional work of removing any duplicates. So, in cases where is is certain that there will not be any duplicates, or where having duplicates is not a problem, use of UNION ALL would be recommended for performance reasons. 
+
+
+
+
 What are the different Clauses used in SQL?
 WHERE Clause: This clause is used to define the condition, extract and display only those records which fulfill the given condition.
 
@@ -398,3 +433,9 @@ Answer: If defined inside a compound statement a local temporary table exists on
 What is CTE?
 Answer: A CTE or common table expression is an expression that contains temporary result set which is defined in a SQL statement.
 
+How do you copy data from one table to another table ?
+Answer:
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
