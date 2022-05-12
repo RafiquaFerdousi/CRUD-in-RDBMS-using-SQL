@@ -1,6 +1,6 @@
 #SQL Basics
 
-How do we use the DISTINCT statement? What is its use?
+How do we use the DISTINCT statement?
 SELECT DISTINCT column_name(s)
  FROM table_name;
  
