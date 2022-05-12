@@ -37,7 +37,8 @@ Answer:UNION merges the contents of two structurally-compatible tables into a si
 It is important to note that the performance of UNION ALL will typically be better than UNION, since UNION requires the server to do the additional work of removing any duplicates. So, in cases where is is certain that there will not be any duplicates, or where having duplicates is not a problem, use of UNION ALL would be recommended for performance reasons. 
 
 
-
+#####Can you get the list of employees with same salary? 
+Select distinct e.empid,e.empname,e.salary from employee e, employee e1 where e.salary =e1.salary and e.empid != e1.empid 
 
 What are the different Clauses used in SQL?
 WHERE Clause: This clause is used to define the condition, extract and display only those records which fulfill the given condition.
